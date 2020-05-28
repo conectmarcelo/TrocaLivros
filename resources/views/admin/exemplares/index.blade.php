@@ -33,6 +33,7 @@
           <td>
               <a href="{{route('exemplar.edit', ['exemplar'=> $e->id])}}" class="btn  btn-sm btn-outline-primary">Editar</a>
               <a href="{{route('exemplar.delete', ['exemplar'=> $e->id])}}" class="btn btn-sm btn-outline-danger">Excluir</a>
+              <a href="{{route('exemplar.foto', ['exemplar'=> $e->id])}}" class="btn btn-sm btn-outline-success">Foto</a>  
           </td>
 
           
@@ -41,9 +42,6 @@
       </tbody>
   </table>  
 
-  <div class="d-flex justify-content-center">
-    {{$exemplares->links()}}
-  </div>
 
 
 </div>

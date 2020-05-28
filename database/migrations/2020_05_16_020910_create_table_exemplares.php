@@ -15,11 +15,15 @@ class CreateTableExemplares extends Migration
     {
         Schema::create('exemplares', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('livro_id')->unsigned();
+           
             $table->string('estado_exemplar');
             $table->string('disponibilizar_exemplar');
-
+           
+            $table->integer('livro_id')->unsigned();
             $table->foreign('livro_id')->references('id')->on('livros');
+
+            $table->integer('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });

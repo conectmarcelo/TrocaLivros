@@ -9,7 +9,8 @@
     <input type="hidden" name="_token" value="{{csrf_token()}}">
 
 
-
+    <!--Pegando o id do usuario logado e salvando no banco como user_id -->
+    <input type="hidden" name=user_id value="{{Auth::user()->id}}">
 
     <div class="form-group">    
         <label >Livro</label>
@@ -19,8 +20,7 @@
                 <option value="{{$livros->id}}">{{$livros->nm_titulo_livro}}</option>
             @endforeach
         </select>
-        
-            
+                  
         
     </div>
     

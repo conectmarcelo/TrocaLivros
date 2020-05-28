@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Exemplar;
 use App\Livro;
+use App\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExemplarController extends Controller
 {
     public function index()
     {
         
-        $exemplares = Exemplar::all();
-
-        $exemplares = exemplar::paginate(6); 
+        
+        $exemplares = Exemplar::where('user_id', Auth::user()->id)->get();
+        
+         
 
         return view('admin.exemplares.index', compact('exemplares'));
     
@@ -25,8 +28,7 @@ class ExemplarController extends Controller
     public function new()
     {
         $livros = Livro::all();
-       
-       
+              
         return view ('admin.exemplares.store', compact('livros'));
 
         
@@ -34,15 +36,19 @@ class ExemplarController extends Controller
 
     public function store(Request $request)
     {
+               
         $exemplarData = $request->all();
 
-        
+              
         $livro = Livro::find($exemplarData['livro_id']);
+                         
         $livro->exemplares()->create($exemplarData);
 
+                
         flash('menu criado com sucesso')->success();
         return redirect()->route('exemplar.index');
-
+      
+        
     }
 
     public function edit(exemplar $exemplar)

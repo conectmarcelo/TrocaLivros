@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exemplar extends Model
 {
-   
+   protected $table = "exemplares";
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +16,8 @@ class Exemplar extends Model
     protected $fillable = [
         'estado_exemplar',
         'disponibilizar_exemplar',
-        'livro_id'
+        'livro_id',
+        'user_id'
         
         
         
@@ -25,6 +26,16 @@ class Exemplar extends Model
     public function livro()
     {
         return $this->belongsTo(Livro::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function fotos()
+    {
+        return $this->hasMany(ExemplarFoto::class);
     }
 
 }

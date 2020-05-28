@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\LivroFoto;
-use App\Livro;
+use App\ExemplarFoto;
+use App\Exemplar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -13,21 +13,20 @@ use Illuminate\Support\Facades\DB;
 
 
 
-
-class LivroFotoController extends Controller
+class ExemplarFotoController extends Controller
 {
-    public function index($livro)
+    public function index($exemplar)
     {
-        $livro_id = $livro;
+        $exemplar_id = $exemplar;
 
-        $fotos = DB::table('livros_fotos')->where('livro_id', '=', $livro_id )->get();
-
-        return view ('admin.livros.fotos.index', compact('livro_id', 'fotos'));
+        $fotos = DB::table('exemplares_fotos')->where('exemplar_id', '=', $exemplar_id )->get();       
+    
+        return view ('admin.exemplares.fotos.index', compact('exemplar_id', 'fotos'));
         
     }
 
     
-    public function save(Request $request, $livro)
+    public function save(Request $request, $exemplar)
     {
         foreach($request->file('fotos') as $foto)
         {
@@ -39,34 +38,35 @@ class LivroFotoController extends Controller
 
             print $newName;
            
-            $livro = Livro::find($livro);
-            $livro->fotos()->create([
+            $exemplar = Exemplar::find($exemplar);
+            $exemplar->fotos()->create([
                 'foto' => $newName
             ]);
 
         }
 
         flash('Foto adicionada com sucesso')->success();
-        return redirect()->route('livro.foto', ['livro'=>$livro]);
+        return redirect()->route('exemplar.foto', ['exemplar'=>$exemplar]);
 
     }   
 
-    public function delete($livro_id, $id)
+
+    public function delete($exemplar_id, $id)
     {
        
-        $livro = LivroFoto::findOrfail($id);
+        $exemplar = ExemplarFoto::findOrfail($id);
 
        
 
-        unlink(public_path('images').'\\'. $livro->foto);
-        $livro -> delete();
+        unlink(public_path('images').'\\'. $exemplar->foto);
+        $exemplar -> delete();
 
         // accf102caaa970ce65d217b9ae9a8e9a57caa67c5ecab55c6bb9d.jpg
 
        
 
         flash('Foto Excluida com Sucesso')->success();
-        return redirect()->route('livro.foto', ['livro'=>$livro_id]);
+        return redirect()->route('exemplar.foto', ['exemplar'=>$exemplar_id]);
     }
     
 }

@@ -25,8 +25,20 @@
             </div>
 
             <div class="form-group col">
+             
+        
                 <label for="ds_idioma_livro">Idioma</label>
-                <input type="text" class="form-control" id="ds_idioma_livro" name="ds_idioma_livro" >
+                <select class="form-control"  id="ds_idioma_livro" name="ds_idioma_livro">
+                    <option></option>
+                    <option>Português</option>
+                    <option>Inglês</option>
+                    <option>Espanhol</option>
+                    <option>Francês</option>
+                    <option>Mandarim</option>
+                    <option>Japonês</option> 
+                    <option>Outros</option>  
+                </select>
+                       
             </div>
 
         </div>

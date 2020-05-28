@@ -7,20 +7,17 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block" src="{{asset('/carousel/a.jpeg')}}" alt="First slide" width=1324>
+      <img class="d-block" src="{{asset('/carousel/carrossel.jpg')}}" alt="First slide" width=1024>
     </div>
     <div class="carousel-item">
-      <img class="d-block" src="{{asset('/carousel/a.jpeg')}}" alt="Second slide" width=1324>
+      <img class="d-block" src="{{asset('/carousel/carrossel.jpg')}}" alt="Second slide" width=1324>
     </div>
     <div class="carousel-item">
-      <img class="d-block" src="{{asset('/carousel/a.jpeg')}}" alt="Third slide" width=1324>
+      <img class="d-block" src="{{asset('/carousel/carrossel.jpg')}}" alt="Third slide" width=1324>
     </div>
   </div>
 </div>
 <br>
-
-
-<h1>Vamos Trocar?</h1>
 
 <br>
 <div class="row">

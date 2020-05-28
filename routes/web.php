@@ -15,11 +15,23 @@ use App\Livro;
 |
 */
 
-Route::get('/', function () {
-    $livros = Livro::all();
-    $livros = Livro::paginate(12); 
-        return view('admin.livros.home', compact('livros'));
+//Route::get('/', function () {
+//    $livros = Livro::all();
+  //  $livros = Livro::paginate(12); 
+
+    //    return view('admin.livros.home', compact('livros'));
+//});
+
+Route::get('/contato', function () {
+    return view('contato');
 });
+
+
+
+Route::get('/', 'SinglePageController@index')->name('single.index');
+Route::get('pesquisar', 'SinglePageController@pesquisar')->name('single.pesquisar');
+
+
 
 Route::group(['middleware'=>['auth']], function(){
     
@@ -36,6 +48,7 @@ Route::group(['middleware'=>['auth']], function(){
             
             Route::get('/fotos/{livro}', 'LivroFotoController@index')->name('livro.foto');
             Route::post('/fotos/{livro}', 'LivroFotoController@save')->name('livro.foto.save');
+            Route::get('deleteFoto/{livro}/{foto}', 'LivroFotoController@delete')->name('livro.foto.delete');
     
         });
        
@@ -48,8 +61,9 @@ Route::group(['middleware'=>['auth']], function(){
             Route::post('edit/{exemplar}', 'ExemplarController@update')->name('exemplar.update');
             Route::get('delete/{exemplar}', 'ExemplarController@delete')->name('exemplar.delete');
             
-            //Route::get('/exemplares/{exemplar}', 'Admin\\ExemplarFotoController@index')->name('exemplar.foto');
-            //Route::post('/exemplares/{exemplar}', 'Admin\\ExemplartoController@save')->name('exemplar.foto.save');
+            Route::get('/exemplares/{exemplar}', 'ExemplarFotoController@index')->name('exemplar.foto');
+            Route::post('/exemplares/{exemplar}', 'ExemplarFotoController@save')->name('exemplar.foto.save');
+            Route::get('deleteFoto/{exemplar}/{foto}', 'ExemplarFotoController@delete')->name('exemplar.foto.delete');
         });
     
     
@@ -70,4 +84,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 });
 
 Auth::routes();
+
+Route::get('login/facebook', 'SocialiteController@redirectToProvider');
+Route::get('login/facebook/callback', 'SocialiteController@handleProviderCallback');
 
