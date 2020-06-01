@@ -37,7 +37,7 @@
           <p class="card-text">{{$e->livro->nm_autor_livro}}</p>
           <p class="card-text">{{$e->user->name}}</p>
 
-          <a href="" class="btn btn-primary" >Quero este livro!</a>
+          <a href="{{route('exemplar.resumo',['exemplar' => $e->id])}}" class="btn btn-primary" >Quero este livro!</a>
         </div>
       </div>
       @endforeach

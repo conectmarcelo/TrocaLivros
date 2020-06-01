@@ -179,6 +179,7 @@ a {
   color: #3490dc;
   text-decoration: none;
   background-color: transparent;
+  font-size: 18px;
 }
 
 a:hover {
@@ -3449,8 +3450,8 @@ input[type=button].btn-block {
   display: none;
   float: left;
   min-width: 10rem;
-  padding: 0.5rem 0;
-  margin: 0.125rem 0 0;
+  padding: 0;
+  margin: 0;
   font-size: 0.9rem;
   color: #212529;
   text-align: left;
@@ -3458,7 +3459,7 @@ input[type=button].btn-block {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 .dropdown-menu-left {

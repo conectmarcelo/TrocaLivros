@@ -67,4 +67,45 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
+
+    public function editPerfil()
+    {
+        
+        $user = User::where('id', Auth::user()->id)->get();
+
+            
+        return view('admin.users.perfil', compact('user'));
+    }
+
+    public function updatePerfil(Request $request, $id)
+    {
+
+        $userData = $request->all();
+        $user = User::findOrfail($id);
+        
+
+        $foto = $request->file('ds_foto');
+        $newName = sha1($foto->getClientOriginalName()) . uniqid() . '.' . $foto->getClientOriginalExtension();
+        $foto->move(public_path('images'), $newName);
+        
+        
+
+        $userData['ds_foto'] = $newName;             
+      
+
+        
+       $user -> update($userData);
+      
+        flash('Perfil Atualizado com sucesso')->success();
+        return redirect()->route('user.edit.perfil');
+
+       
+
+    }
+
+    
+
+
+
+
 }

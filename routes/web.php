@@ -61,9 +61,14 @@ Route::group(['middleware'=>['auth']], function(){
             Route::post('edit/{exemplar}', 'ExemplarController@update')->name('exemplar.update');
             Route::get('delete/{exemplar}', 'ExemplarController@delete')->name('exemplar.delete');
             
+            Route::get('resumo/{exemplar}', 'ExemplarController@resumo')->name('exemplar.resumo');
+
+
+
             Route::get('/exemplares/{exemplar}', 'ExemplarFotoController@index')->name('exemplar.foto');
             Route::post('/exemplares/{exemplar}', 'ExemplarFotoController@save')->name('exemplar.foto.save');
             Route::get('deleteFoto/{exemplar}/{foto}', 'ExemplarFotoController@delete')->name('exemplar.foto.delete');
+            
         });
     
     
@@ -75,6 +80,9 @@ Route::group(['middleware'=>['auth']], function(){
             Route::get('edit/{user}', 'UserController@edit')->name('user.edit');
             Route::post('edit/{user}', 'UserController@update')->name('user.update');
             Route::get('delete/{user}', 'UserController@delete')->name('user.delete');
+
+            Route::get('perfil', 'UserController@editPerfil')->name('user.edit.perfil');
+            Route::post('perfil/{user}', 'UserController@updatePerfil')->name('user.update.perfil');
             
         });   
     });

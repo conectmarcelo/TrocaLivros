@@ -58,14 +58,18 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
+                                    <img src="{{asset('/images/'. Auth::user()->ds_foto)}}" alt="foto" style=" with:40px; height:40px; border-radius:50%;">
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                           
                                     <ul style="list-style:none;">
                                         <li><a class="nav-link" href="{{route('livro.index')}}">Livros</a></li>
-                                        <li><a class="nav-link" href="{{route('user.index')}}">Usuarios</a></li>
+                                        <li><a class="nav-link" href="{{route('user.index')}}">Usuários</a></li>
+                                        <li><a class="nav-link" href="{{route('user.edit.perfil')}}">Perfil</a></li>
                                         <li><a class="nav-link" href="{{route('exemplar.index')}}">Meus Livros</a></li>
+                                        <li><a class="nav-link" href="">Minhas Trocas</a></li>
+                                        <li><a class="nav-link" href="">Notificações</a></li>
                                         <li><a class="nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

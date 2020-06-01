@@ -11,7 +11,7 @@
                 {{csrf_field()}}
                 <div class="form-group">
                     <label>Carregar Fotos</label>
-                    <input type="file" name="fotos[]" multiple>
+                    <input type="file" name="fotos[]" multiple required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-lg btn-success">Enviar Fotos</button>

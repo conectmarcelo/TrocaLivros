@@ -85,4 +85,19 @@ class ExemplarController extends Controller
         return redirect()->route('exemplar.index');
     }
 
+
+
+    public function resumo($id)
+
+
+    {
+        $exemplar = Exemplar::findOrfail($id);
+        
+        
+        $exemplares = Exemplar::All();
+       
+        return view('admin.exemplares.resumo', compact('exemplar'));
+    
+    }          
+
 }
