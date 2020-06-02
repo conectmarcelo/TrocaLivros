@@ -63,7 +63,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                           
-                                    <ul style="list-style:none;">
+                                    <ul style="list-style:none; padding:0px;">
                                         <li><a class="nav-link" href="{{route('livro.index')}}">Livros</a></li>
                                         <li><a class="nav-link" href="{{route('user.index')}}">Usuários</a></li>
                                         <li><a class="nav-link" href="{{route('user.edit.perfil')}}">Perfil</a></li>
@@ -115,34 +115,41 @@
 </body>
 
 <footer class="page-footer font-small indigo" style="background-color: #6cb2eb; margin-top:100px;">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <style>
+
+        a{
+            color: #364e94;
+            
+        }
+        
+        a:hover{
+            text-decoration: none;
+        }
+
+        
+
         .fa {
-        padding: 0px;
-        font-size: 100px;
+        font-size:30px;
         
         text-align: center;
         text-decoration: none;
         }
 
-        /* Add a hover effect if you want */
+        
         .fa:hover {
         opacity: 0.7;
         }
 
-        /* Set a specific color for each brand */
-
-        /* Facebook */
         .fa-facebook {
-        
         color: white;
         }
 
-        /* Twitter */
-        .fa-twitter {
-       
+        .fa-envelope{
         color: white;
         }
+
     </style>
 
 
@@ -154,16 +161,19 @@
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!" style="color: #364e94;">Home</a>
+                        <a href="http://127.0.0.1:8000/" >Home</a>
                     </li>
+                    
                     <li>
-                        <a href="#!" style="color: #364e94;">Como Funciona</a>
+                        <a href="">Como Funciona</a>
                     </li>
+                    
                     <li>
-                        <a href="#!" style="color: #364e94;">Contato</a>
+                        <a href="">Quem Somos</a>
                     </li>
+
                     <li>
-                        <a href="#!" style="color: #364e94;">Quem Somos</a>
+                        <a href="/contato">Contato</a>
                     </li>
                 </ul>
 
@@ -173,7 +183,7 @@
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!" style="color: #364e94;">Política de Privacidade</a>
+                        <a href="">Política de Privacidade</a>
                     </li>
                 </ul>
 
@@ -182,23 +192,17 @@
             <div class="col-md-3 mx-auto">
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!" style="color: #364e94; ">livroexchange@gmail.com</a>
+                    <a href=""><i class="fa fa-envelope"> </i> livroexchange@gmail.com</a>
                     </li>
                     <li>
-                        <a href="#!" style="color: #364e94;">livroexchange.com</a>
+                    <a href=""><i class="fa fa-facebook"> </i> livroexchange</a>
                     </li>
 
-                    <a href="#" class="fa fa-facebook"></a>
-                    <a href="#" class="fa fa-twitter"></a>
-                    <a href="#" class="fa fa-envelope"></a>
+                   
+                    
       
         </div>
     </div>
-
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
 </footer>
 
 </html>
