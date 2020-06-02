@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Exemplar;
 use App\Livro;
 use App\User;

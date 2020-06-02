@@ -113,4 +113,92 @@
         </main>
     </div>
 </body>
+
+<footer class="page-footer font-small indigo" style="background-color: #6cb2eb; margin-top:100px;">
+
+    <style>
+        .fa {
+        padding: 0px;
+        font-size: 100px;
+        
+        text-align: center;
+        text-decoration: none;
+        }
+
+        /* Add a hover effect if you want */
+        .fa:hover {
+        opacity: 0.7;
+        }
+
+        /* Set a specific color for each brand */
+
+        /* Facebook */
+        .fa-facebook {
+        
+        color: white;
+        }
+
+        /* Twitter */
+        .fa-twitter {
+       
+        color: white;
+        }
+    </style>
+
+
+    <div class="container text-center text-md-left">
+        <br>
+        <div class="row">
+
+            <div class="col-md-4 mx-auto">
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!" style="color: #364e94;">Home</a>
+                    </li>
+                    <li>
+                        <a href="#!" style="color: #364e94;">Como Funciona</a>
+                    </li>
+                    <li>
+                        <a href="#!" style="color: #364e94;">Contato</a>
+                    </li>
+                    <li>
+                        <a href="#!" style="color: #364e94;">Quem Somos</a>
+                    </li>
+                </ul>
+
+            </div>
+     
+            <div class="col-md-4 mx-auto">
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!" style="color: #364e94;">Política de Privacidade</a>
+                    </li>
+                </ul>
+
+            </div>
+     
+            <div class="col-md-3 mx-auto">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!" style="color: #364e94; ">livroexchange@gmail.com</a>
+                    </li>
+                    <li>
+                        <a href="#!" style="color: #364e94;">livroexchange.com</a>
+                    </li>
+
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-envelope"></a>
+      
+        </div>
+    </div>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</footer>
+
 </html>
