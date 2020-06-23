@@ -4,20 +4,7 @@
 
 <div class="container">
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block" src="{{asset('/carousel/carrossel.jpg')}}" alt="First slide" width=1024>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block" src="{{asset('/carousel/carrossel.jpg')}}" alt="Second slide" width=1324>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block" src="{{asset('/carousel/carrossel.jpg')}}" alt="Third slide" width=1324>
-    </div>
-  </div>
-</div>
-<br>
+
 
 <br>
 <div class="row">
@@ -25,9 +12,9 @@
 @foreach($livros as $livro)
 
       <div class="card col-2">
-        @if($livro->fotos()->count())
-        <img src="{{asset('/images/'. $livro->fotos()->first()->foto)}}" class="card-img-top" alt="livro" >
-        @endif
+        
+        <img src="{{asset('/images/'. $livro->exemplares->fotos->[{0}]first()->foto)}}" class="card-img-top" alt="livro" >
+        
         <div class="card-body">
           <h5 class="card-title">{{$livro->nm_titulo_livro}}</h5>
           <p class="card-text">{{$livro->nm_autor_livro}}</p>

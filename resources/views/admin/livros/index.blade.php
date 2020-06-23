@@ -6,8 +6,10 @@
 
   <h1>Livros</h1>
 
-  <a href="{{route('livro.new')}}" class="float-right btn btn-primary">Novo</a>
-
+  <div class="form-inline float-right">
+  <a href="{{route('livro.index')}}" class="btn btn-danger">Voltar</a>
+  <a href="{{route('livro.new')}}" class="btn btn-primary">Novo</a>
+  </div>
   <table class="table table-striped">
       <thead>
       <tr>

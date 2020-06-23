@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="container">
+
 <div class="jumbotron jumbotron-fluid" style="background-color: #6cb2ed;">
     <div class="container">
         <h1 style ="color :white;font-family: helvética;" class="display-4">Alguma dúvida ou sugestão nos envie</h1>
@@ -33,5 +35,7 @@
             <button type="submit" class="btn btn-primary">Enviar </button>
         </div>
     </form>
+</div>
+
 </div>
 @endsection

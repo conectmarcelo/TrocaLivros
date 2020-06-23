@@ -24,7 +24,16 @@ class LivroRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            
+            'cd_isbn_livro' => 'required', 'bigInteger', 'cd_isbn_livro', 'unique:livros'
+            
+            
         ];
     }
+
+    public function messages(){
+        return [
+            
+            'unique' => 'Este ":attribute" não se encontra disponivel no momento!'
+        ];
 }

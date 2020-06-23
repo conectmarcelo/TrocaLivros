@@ -22,10 +22,11 @@ class CreateTableExemplares extends Migration
             $table->integer('livro_id')->unsigned();
             $table->foreign('livro_id')->references('id')->on('livros');
 
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -36,6 +37,6 @@ class CreateTableExemplares extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_exemplares');
+        Schema::dropIfExists('exemplares');
     }
 }

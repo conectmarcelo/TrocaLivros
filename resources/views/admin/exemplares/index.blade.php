@@ -2,47 +2,49 @@
 @extends('layouts.app')
 @section('content')
 
+
 <div class="container">
 
-  <h1>Meus Livros</h1>
+    <div class="row">
+        
+        <div class="col-10 ">
+            <h1>Meus Livros</h1>
+        </div>
+        <div class="col-2 ">
+            <a href="{{route('pesquisar.livro')}}" class="btn btn-lg btn-primary">INCLUIR</a>
+        </div>
+        
+    </div>
+    
 
-  <a href="{{route('exemplar.new')}}" class="float-right btn btn-primary">Novo</a>
+    
+    
+    <div class="row">
 
-  <table class="table table-striped">
-      <thead>
-      <tr>
-          <th>#</th>
-          <th>Titulo</th>
-          <th>Autor</th>
-          <th>Categoria</th>
-          <th>Estato</th>
-          <th>Trocar ?</th>
-          
-          <th>Ações</th>
-      </tr>
-      </thead>
-      <tbody>
-          @foreach($exemplares as $e)
-          <tr>
-          <td >{{$e->id}}</td>
-          <td>{{$e->livro->nm_titulo_livro}}</td>
-          <td>{{$e->livro->nm_autor_livro}}</td>
-          <td>{{$e->livro->ds_categoria_livro}}</td>
-          <td>{{$e->estado_exemplar}}</td>
-          <td>{{$e->disponibilizar_exemplar}}</td>
-          <td>
-              <a href="{{route('exemplar.edit', ['exemplar'=> $e->id])}}" class="btn  btn-sm btn-outline-primary">Editar</a>
-              <a href="{{route('exemplar.delete', ['exemplar'=> $e->id])}}" class="btn btn-sm btn-outline-danger">Excluir</a>
-              <a href="{{route('exemplar.foto', ['exemplar'=> $e->id])}}" class="btn btn-sm btn-outline-success">Foto</a>  
-          </td>
+        @foreach($exemplares as $e)
 
-          
-      </tr>
-          @endforeach
-      </tbody>
-  </table>  
-
-
-
-</div>
+        <div class="card col-2">
+            
+            @if($e->fotos()->count() == '')
+                <img src="{{asset('/images/livro.jpg')}}" class="card-img-top" alt="livro" >
+            @else 
+                @if($e->fotos()->count())
+                    <img src="{{asset('/images/'. $e->fotos()->first()->foto)}}" class="card-img-top" alt="livro">
+                @endif
+            @endif
+            
+            <div class="card-body">
+                <h4 class="card-title">{{$e->livro->nm_titulo_livro}}</h4>
+                <p class="card-text">Autor: {{$e->livro->nm_autor_livro}}</p>
+                <p>Categoria: {{$e->livro->ds_categoria_livro}}</p>
+                <p>Condição: {{$e->estado_exemplar}}</p>
+                <p>Disponínvel Troca: {{$e->disponibilizar_exemplar}}</p>
+                <a href="{{route('exemplar.edit', ['exemplar'=> $e->id])}}" class="btn  btn-sm btn-outline-primary">Editar</a>
+                <a href="{{route('exemplar.delete', ['exemplar'=> $e->id])}}" class="btn btn-sm btn-outline-danger">Excluir</a>
+                <a href="{{route('exemplar.foto', ['exemplar'=> $e->id])}}" class="btn btn-sm btn-outline-success">Foto</a>  
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div> 
 @endsection

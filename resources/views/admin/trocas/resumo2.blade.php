@@ -8,16 +8,12 @@
         
    
     
-    <form action="{{route('troca.solicita')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('troca.troca', ['id'=>$troca])}}" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
 
-        <input type="hidden" name="cd_usuario_a" value="{{ Auth::user()->id}}">
-        <input type="hidden" name="cd_usuario_b" value="{{$exemplar->user->id}}">
-        <input type="hidden" name="cd_exemplar_a" value="">
-        <input type="hidden" name="cd_exemplar_b" value="{{$exemplar->id}}">
-        <input type="hidden" name="ds_status_troca" value="solicitado">
-
-        
+            
+        <input type="hidden" name="cd_exemplar_a" value="{{$exemplar->id}}">
+        <input type="hidden" name="ds_status_troca" value="trocado">        
         
         
 
@@ -30,7 +26,7 @@
                 <img src="{{asset('/images/'. $exemplar->fotos()->first()->foto)}}"  alt="exemplar" style="width:260px; height:390px;" ><br>
                 <br>
                 
-                <input type="submit" class="btn btn-lg btn-primary" value="Solicitar Troca" style="width:260px;">           
+                <input type="submit" class="btn btn-lg btn-primary" value="Trocar" style="width:260px;">           
             </div>
 
             <div class="row col-8">

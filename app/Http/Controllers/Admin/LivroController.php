@@ -28,6 +28,7 @@ class LivroController extends Controller
 
     public function store(Request $request)
     {
+        
         $livroData = $request->all();
 
         $livro = new Livro();
@@ -68,5 +69,24 @@ class LivroController extends Controller
         flash('Livro Excluindo com Sucesso')->success();
         return redirect()->route('livro.index');
     }
+
+
+    public function pesquisar(Request $request)
+    {
+     
+      $text = $request->text;
+
+      $livros = Livro::where('nm_titulo_livro', 'LIKE', "%{$text}%")->
+                       orWhere('cd_isbn_livro', 'LIKE', "%{$text}%")->
+                       orWhere('nm_autor_livro', 'LIKE', "%{$text}%")->get();
+      
+      
+     
+      return view('admin.livros.pesquisa', compact('livros'));
+      
+    }
+    
+
+
 
 }

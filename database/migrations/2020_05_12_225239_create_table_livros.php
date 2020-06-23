@@ -15,14 +15,15 @@ class CreateTableLivros extends Migration
     {
         Schema::create('livros', function (Blueprint $table) {
             $table->increments('id');
+            
             $table->string('nm_titulo_livro');
-            $table->integer('cd_isbn_livro');
+            $table->bigInteger('cd_isbn_livro')->unique();
             $table->integer('aa_ano_livro');
             $table->string('ds_idioma_livro');
             $table->string('ds_categoria_livro');
             $table->string('nm_autor_livro');
             $table->string('nm_editora_livro');
-            $table->string('ds_resumo_livro');
+            $table->longText('ds_resumo_livro');
 
 
             $table->timestamps();
@@ -37,6 +38,7 @@ class CreateTableLivros extends Migration
      */
     public function down()
     {
+        
         Schema::dropIfExists('livros');
     }
 }

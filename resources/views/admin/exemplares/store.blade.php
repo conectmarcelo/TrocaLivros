@@ -2,8 +2,7 @@
 @section('content')
 
 <div class="container">
-    <h1>Cadastrar Meu Livro</h1>
-    
+        
     <form action="{{route('exemplar.store')}}" method="post">
     
     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -11,16 +10,12 @@
 
     <!--Pegando o id do usuario logado e salvando no banco como user_id -->
     <input type="hidden" name=user_id value="{{Auth::user()->id}}">
-
+    <input type="hidden" name="livro_id" id="livro_id" value="{{$livros->id}}">
+    
     <div class="form-group">    
-        <label >Livro</label>
-        <select name="livro_id" class="form-control">
-            <option value=""></option>
-            @foreach($livros as $livros)
-                <option value="{{$livros->id}}">{{$livros->nm_titulo_livro}}</option>
-            @endforeach
-        </select>
-                  
+        
+        <h1>Meu Livro: "{{$livros->nm_titulo_livro}}"</h1>
+                 
         
     </div>
     

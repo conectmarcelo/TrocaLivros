@@ -19,6 +19,7 @@ class CreateTableExemplaresFotos extends Migration
             
             $table->string('foto');
             $table->timestamps();
+            $table->softDeletes();
 
 
             $table->foreign('exemplar_id')->references('id')->on('exemplares');
@@ -33,5 +34,6 @@ class CreateTableExemplaresFotos extends Migration
     public function down()
     {
         Schema::dropIfExists('exemplares_fotos');
+        
     }
 }

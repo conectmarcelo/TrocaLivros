@@ -24,9 +24,15 @@ class ExemplarController extends Controller
     
     }          
 
-    public function new()
-    {
-        $livros = Livro::all();
+    public function new($id)
+    
+    {   
+
+        
+
+        $livros = Livro::findOrfail($id);
+
+        
               
         return view ('admin.exemplares.store', compact('livros'));
 
@@ -44,7 +50,7 @@ class ExemplarController extends Controller
         $livro->exemplares()->create($exemplarData);
 
                 
-        flash('menu criado com sucesso')->success();
+        flash('Livro cadastrado com sucesso!')->success();
         return redirect()->route('exemplar.index');
       
         
@@ -67,7 +73,7 @@ class ExemplarController extends Controller
 
         $exemplar -> update($exemplarData);
 
-        flash('Exemplar Atualizado com sucesso')->success();
+        flash('Livro atualizado com sucesso!')->success();
         return redirect()->route('exemplar.index', ['exemplar =>$id']);
 
 
@@ -80,7 +86,7 @@ class ExemplarController extends Controller
 
         $exemplar -> delete();
 
-        flash('exemplar Excluindo com Sucesso')->success();
+        flash('Livro excluído com sucesso!')->success();
         return redirect()->route('exemplar.index');
     }
 
@@ -94,6 +100,8 @@ class ExemplarController extends Controller
         
         
         $exemplares = Exemplar::All();
+
+        
        
         return view('admin.exemplares.resumo', compact('exemplar'));
     

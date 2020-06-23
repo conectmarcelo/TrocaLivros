@@ -45,17 +45,22 @@ Route::group(['middleware'=>['auth']], function(){
             Route::get('edit/{livro}', 'LivroController@edit')->name('livro.edit');
             Route::post('edit/{livro}', 'LivroController@update')->name('livro.update');
             Route::get('delete/{livro}', 'LivroController@delete')->name('livro.delete');
-            
+            Route::get('/pesquisar', 'LivroController@pesquisar')->name('pesquisar.livro');
+            Route::get('/cadastroProcedimento/{id}', 'ProcedimentoController@telaEdicao')->name('cadastro-procedimento');
+
+
             Route::get('/fotos/{livro}', 'LivroFotoController@index')->name('livro.foto');
             Route::post('/fotos/{livro}', 'LivroFotoController@save')->name('livro.foto.save');
             Route::get('deleteFoto/{livro}/{foto}', 'LivroFotoController@delete')->name('livro.foto.delete');
+
+            
     
         });
        
         Route::prefix('exemplares')->group( function () {
             
             Route::get('/', 'ExemplarController@index')->name('exemplar.index');
-            Route::get('new', 'ExemplarController@new')->name('exemplar.new');
+            Route::get('new/{livro}', 'ExemplarController@new')->name('exemplar.new');
             Route::post('store', 'ExemplarController@store')->name('exemplar.store');
             Route::get('edit/{exemplar}', 'ExemplarController@edit')->name('exemplar.edit');
             Route::post('edit/{exemplar}', 'ExemplarController@update')->name('exemplar.update');
@@ -70,6 +75,18 @@ Route::group(['middleware'=>['auth']], function(){
             Route::get('deleteFoto/{exemplar}/{foto}', 'ExemplarFotoController@delete')->name('exemplar.foto.delete');
             
         });
+
+        Route::prefix('trocas')->group( function () {
+            
+            Route::get('/', 'TrocaController@index')->name('troca.index');
+            Route::post('solicita', 'TrocaController@solicita')->name('troca.solicita');
+            Route::get('notificacao', 'TrocaController@notificacao')->name('troca.notificacao');
+            Route::get('estante/{user}/{trocaId}', 'TrocaController@estante')->name('troca.estante');
+            Route::get('resumo2/{exemplar}/{trocaId}', 'TrocaController@resumo2')->name('troca.resumo2');
+            
+            Route::post('troca', 'TrocaController@troca')->name('troca.troca');
+        });
+    
     
     
         Route::prefix('users')->group( function () {

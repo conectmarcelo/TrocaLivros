@@ -57,4 +57,13 @@ class User extends Authenticatable
     }
 
     
+    public function trocaA()
+    {
+        return $this->hasMany(Troca::class);
+    }
+
+    public function trocaB()
+    {
+        return $this->hasMany(Troca::class);
+    }
 }

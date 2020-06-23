@@ -4,7 +4,7 @@
 
 <div class="container">
 
-  <h1>Usuarios</h1>
+  <h1>Usuários</h1>
 
   <a href="{{route('user.new')}}" class="float-right btn btn-primary">Novo</a>
 

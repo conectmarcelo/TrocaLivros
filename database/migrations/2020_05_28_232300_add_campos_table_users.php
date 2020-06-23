@@ -15,15 +15,15 @@ class AddCamposTableUsers extends Migration
     {
         Schema::table('users', function(Blueprint $table) {
             
-            $table->string('dt_nascimento');
-            $table->string('ds_telefone');
-            $table->string('ds_foto');
-            $table->string('ds_logradouro');
-            $table->string('ds_numero_logradouro');
-            $table->string('ds_bairro');
-            $table->string('ds_cidade');
-            $table->string('ds_uf');
-            $table->string('cd_cep');
+            $table->string('dt_nascimento')->nullable();
+            $table->string('ds_telefone')->nullable();
+            $table->string('ds_foto')->nullable();
+            $table->string('ds_logradouro')->nullable();
+            $table->string('ds_numero_logradouro')->nullable();
+            $table->string('ds_bairro')->nullable();
+            $table->string('ds_cidade')->nullable();
+            $table->string('ds_uf')->nullable();
+            $table->string('cd_cep')->nullable();
         });
 
         

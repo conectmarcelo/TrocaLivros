@@ -15,12 +15,13 @@ class CreateTableLivrosFotos extends Migration
     {
         Schema::create('livros_fotos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('livro_id')->unsigned();
+           
             
             $table->string('foto');
             $table->timestamps();
+            $table->softDeletes();
 
-
+            $table->integer('livro_id')->unsigned();
             $table->foreign('livro_id')->references('id')->on('livros');
 
             
@@ -32,8 +33,14 @@ class CreateTableLivrosFotos extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+
+    public function down(){
+
+        
+
         Schema::dropIfExists('livros_fotos');
+    
+        
+    
     }
 }

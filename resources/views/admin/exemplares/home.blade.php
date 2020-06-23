@@ -4,51 +4,58 @@
 
 <div class="container">
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block col-12" src="{{asset('/carousel/carrosel.jpg')}}" alt="First slide" >
+@guest
+    
+@if (Route::has('register'))
+    
+@endif
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block col-12" src="{{asset('/carousel/carrosel.jpg')}}" alt="First slide" >
+            </div>
+            <div class="carousel-item">
+                <img class="d-block col-12" src="{{asset('/carousel/2.jpeg')}}" alt="Second slide" >
+            </div>
+            <div class="carousel-item">
+                <img class="d-block col-12" src="{{asset('/carousel/carrosel.jpg')}}" alt="Third slide">
+            </div>
+        </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block col-12" src="{{asset('/carousel/carrosel.jpg')}}" alt="Second slide" >
+    <br>
+
+@else
+    
+@endguest
+
+    <h1>Livros disponíveis para troca</h1>
+    <br>
+    <div class="row">
+
+        @foreach($exemplares as $e)
+
+        <div class="card col-2">
+            @if($e->fotos()->count() == '')
+                <img src="{{asset('/images/livro.jpg')}}" class="card-img-top" alt="livro" >
+            @else 
+              @if($e->fotos()->count())
+                <img src="{{asset('/images/'. $e->fotos()->first()->foto)}}" class="card-img-top" alt="livro" >
+              @endif
+            @endif
+
+            <div class="card-body">
+                <h5 class="card-title">{{$e->livro->nm_titulo_livro}}</h5>
+                <p class="card-text">{{$e->livro->nm_autor_livro}}</p>
+                <p class="card-text">{{$e->user->name}}</p>
+                <a href="{{route('exemplar.resumo',['exemplar' => $e->id])}}" class="btn btn-primary" >Quero este livro!</a>
+            </div>
+        </div>
+        @endforeach
     </div>
-    <div class="carousel-item">
-      <img class="d-block col-12" src="{{asset('/carousel/carrosel.jpg')}}" alt="Third slide">
-    </div>
+    <p></p>
+    <div class="d-flex justify-content-center">
+    {{$exemplares->links()}}
   </div>
 </div>
-<br>
-
-
-<br>
-<div class="row">
-
-@foreach($exemplares as $e)
-
-      <div class="card col-2">
-       
-      @if($e->fotos()->count())
-        <img src="{{asset('/images/'. $e->fotos()->first()->foto)}}" class="card-img-top" alt="livro" >
-        @endif
-
-        <div class="card-body">
-          
-          <h5 class="card-title">{{$e->livro->nm_titulo_livro}}</h5>
-          <p class="card-text">{{$e->livro->nm_autor_livro}}</p>
-          <p class="card-text">{{$e->user->name}}</p>
-
-          <a href="{{route('exemplar.resumo',['exemplar' => $e->id])}}" class="btn btn-primary" >Quero este livro!</a>
-        </div>
-      </div>
-      @endforeach
-
-
-     
-      </div>
-
-      <div class="d-flex justify-content-center">
-       
-      </div>
-
-      </div>
 @endsection
