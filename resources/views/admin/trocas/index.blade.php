@@ -9,12 +9,24 @@
 
                 <div class="row">
                     <div class=col-2>
+
+                    @if($t->exemplarA->fotos()->count() == '')
+                        <img src="{{asset('/images/livro.jpg')}}" class="card-img-top" alt="livro" >
+                    @else 
                         @if($t->exemplarA->fotos()->count())
-                        <img src="{{asset('/images/'. $t->exemplarA->fotos()->first()->foto)}}" class="card-img-top" alt="livro" style="height:180px">
+                            <img src="{{asset('/images/'. $t->exemplarA->fotos()->first()->foto)}}" class="card-img-top" alt="livro" style="height:180px">
                         @endif
+                    @endif
+                    
+     
                     </div>
                     <div class="col-2">
                         <h1>Enviei</h1>
+                        <p><b>{{$t->exemplarA->livro->nm_titulo_livro}}</b></p>
+                        <p>{{$t->userA->name}}</p>
+                        <p>{{$t->userA->ds_cidade}} / {{$t->userA->ds_uf}}</p>
+                        <p>{{$t->userA->ds_telefone}}</p>
+                        <p>{{$t->userA->email}}</p>
                     </div>
                     <div class="col-4 ">
                             <div class="row justify-content-center">
@@ -29,6 +41,7 @@
                     </div>
                     <div class="col-2">
                         <h1>Recebi</h1>
+                        <p><b>{{$t->exemplarB->livro->nm_titulo_livro}}</b></p>
                         <p>{{$t->userB->name}}</p>
                         <p>{{$t->userB->ds_cidade}} / {{$t->userA->ds_uf}}</p>
                         <p>{{$t->userB->ds_telefone}}</p>
@@ -36,9 +49,13 @@
                     </div>
                     <div class="col-2">
                         
+                    @if($t->exemplarB->fotos()->count() == '')
+                        <img src="{{asset('/images/livro.jpg')}}" class="card-img-top" alt="livro" >
+                    @else 
                         @if($t->exemplarB->fotos()->count())
-                        <img src="{{asset('/images/'. $t->exemplarB->fotos()->first()->foto)}}" class="card-img-top" alt="livro" style="height:180px">
+                            <img src="{{asset('/images/'. $t->exemplarB->fotos()->first()->foto)}}" class="card-img-top" alt="livro" style="height:180px">
                         @endif
+                    @endif
                     </div>
                 </div>
             
@@ -46,12 +63,21 @@
   
                 <div class="row">
                     <div class=col-2>
+                    @if($t->exemplarB->fotos()->count() == '')
+                        <img src="{{asset('/images/livro.jpg')}}" class="card-img-top" alt="livro" >
+                    @else 
                         @if($t->exemplarB->fotos()->count())
-                        <img src="{{asset('/images/'. $t->exemplarB->fotos()->first()->foto)}}" class="card-img-top" alt="livro" style="height:180px">
+                            <img src="{{asset('/images/'. $t->exemplarB->fotos()->first()->foto)}}" class="card-img-top" alt="livro" style="height:180px">
                         @endif
+                    @endif
                     </div>
                     <div class="col-2">
                         <h1>Enviei</h1>
+                        <p><b>{{$t->exemplarB->livro->nm_titulo_livro}}</b></p>
+                        <p>{{$t->userB->name}}</p>
+                        <p>{{$t->userB->ds_cidade}} / {{$t->userA->ds_uf}}</p>
+                        <p>{{$t->userB->ds_telefone}}</p>
+                        <p>{{$t->userB->email}}</p>
                     </div>
                     <div class="col-4 ">
                             <div class="row justify-content-center">
@@ -66,6 +92,7 @@
                     </div>
                     <div class="col-2">
                         <h1>Recebi</h1>
+                        <p><b>{{$t->exemplarA->livro->nm_titulo_livro}}</b></p>
                         <p>{{$t->userA->name}}</p>
                         <p>{{$t->userA->ds_cidade}} / {{$t->userA->ds_uf}}</p>
                         <p>{{$t->userA->ds_telefone}}</p>
@@ -73,9 +100,13 @@
                         
                     </div>
                     <div class="col-2">
+                    @if($t->exemplarA->fotos()->count() == '')
+                        <img src="{{asset('/images/livro.jpg')}}" class="card-img-top" alt="livro" >
+                    @else 
                         @if($t->exemplarA->fotos()->count())
-                        <img src="{{asset('/images/'. $t->exemplarA->fotos()->first()->foto)}}" class="card-img-top" alt="livro" style="height:180px">
+                            <img src="{{asset('/images/'. $t->exemplarA->fotos()->first()->foto)}}" class="card-img-top" alt="livro" style="height:180px">
                         @endif
+                    @endif
                     </div>
                 </div>
             @endif     

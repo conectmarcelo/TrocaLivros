@@ -6,7 +6,8 @@
 
 
 <div class="container">
-    
+
+<h1>Incluir Livro na Minha Estante</h1>    
     <div class="row col-12 justify-content-start" >
         <form class="form-inline" method="get" action="{{route('pesquisar.livro')}}">
             {{csrf_field()}}
@@ -33,7 +34,7 @@
                     <th>ISBN</th>
                     <th>TITULO</th>
                     <th>AUTOR</th>
-                    <th>OPERAÇÃO</th>
+                    <th>ESTANTE</th>
                     
                 </tr>
             </thead>
@@ -76,6 +77,7 @@
       <div class="modal-body">
         Faça uma pesquisa antes de prosseguir, você encontrou o seu livro?
       </div>
+      <input type="text">
       <div class="modal-footer">
         <a href="{{route('livro.new')}}" class="btn btn-danger">Não</a>
         <button type="button" class="btn btn-success" data-dismiss="modal">Sim</button>

@@ -28,7 +28,8 @@ Route::get('/contato', function () {
 
 
 
-Route::get('/', 'SinglePageController@index')->name('single.index');
+Route::get('/', 'SinglePageController@livros')->name('single.livros');
+Route::get('livros', 'SinglePageController@livros')->name('single.livros');
 Route::get('pesquisar', 'SinglePageController@pesquisar')->name('single.pesquisar');
 
 
@@ -73,6 +74,8 @@ Route::group(['middleware'=>['auth']], function(){
             Route::get('/exemplares/{exemplar}', 'ExemplarFotoController@index')->name('exemplar.foto');
             Route::post('/exemplares/{exemplar}', 'ExemplarFotoController@save')->name('exemplar.foto.save');
             Route::get('deleteFoto/{exemplar}/{foto}', 'ExemplarFotoController@delete')->name('exemplar.foto.delete');
+
+            Route::get('lista/{livro}', 'ExemplarController@pesquisaPorTitulo')->name('exemplar.pesquisaPorTitulo');
             
         });
 
@@ -81,8 +84,10 @@ Route::group(['middleware'=>['auth']], function(){
             Route::get('/', 'TrocaController@index')->name('troca.index');
             Route::post('solicita', 'TrocaController@solicita')->name('troca.solicita');
             Route::get('notificacao', 'TrocaController@notificacao')->name('troca.notificacao');
+            Route::get('solicitacao', 'TrocaController@solicitacao')->name('troca.solicitacao');
             Route::get('estante/{user}/{trocaId}', 'TrocaController@estante')->name('troca.estante');
             Route::get('resumo2/{exemplar}/{trocaId}', 'TrocaController@resumo2')->name('troca.resumo2');
+            Route::get('recusar', 'TrocaController@recusar')->name('troca.recusar');
             
             Route::post('troca', 'TrocaController@troca')->name('troca.troca');
         });
@@ -110,6 +115,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('login/facebook', 'SocialiteController@redirectToProvider');
+Route::get('login/facebook', 'SocialiteController@redirectToProvider')->name('login.facebook');
 Route::get('login/facebook/callback', 'SocialiteController@handleProviderCallback');
 

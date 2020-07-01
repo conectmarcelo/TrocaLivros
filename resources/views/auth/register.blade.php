@@ -66,6 +66,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Cadastrar') }}
                                 </button>
+                                <p></p>
                             </div>
                         </div>
                     </form>

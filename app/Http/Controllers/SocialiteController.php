@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use Laravel\Socialite\Facades\Socialite;
+
+use Auth;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class SocialiteController extends Controller
 {
@@ -25,12 +28,53 @@ class SocialiteController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('facebook')->user();
+        $userSocial = Socialite::driver('facebook')->user();
 
-        echo "<h1>Seja Bem Vindo! {$user->getName()}</h1>";
-        echo "<img src='{$user->getAvatar()}' style='max-width:200px; border-radius:50%;'>";
+        //echo "<h1>Seja Bem Vindo! {$user->getName()}</h1>";
+        //echo "<img src='{$user->getAvatar()}' style='max-width:200px; border-radius:50%;'>";
        
         
+
+
+       // User::create([
+        //'name' => $user->getName(),
+        //'email' => $user->getEmail(),
+         //'password' => Hash::make($user->getID())
+        //]);
+        
         // $user->token;
+
+        
+
+        $findUser = User::where('email', $userSocial->email)->first();
+
+        if($findUser){
+
+            Auth::login($findUser);
+
+            $users = $findUser;
+
+            return view('home', compact('users'));
+
+        }else{
+
+
+            $user = new User();
+        
+        $user->name = $userSocial->name;
+        $user->email = $userSocial->email;
+        $user->password = Hash::make($userSocial->id);
+        $user->ds_foto = $userSocial->avatar;
+        $user->save();
+
+        Auth::login($user);
+
+        $users = $user;
+
+        return view('home',compact('users'));
+
+        }
+        
+        
     }
 }

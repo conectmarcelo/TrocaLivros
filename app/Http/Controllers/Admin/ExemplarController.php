@@ -18,8 +18,7 @@ class ExemplarController extends Controller
         
         $exemplares = Exemplar::where('user_id', Auth::user()->id)->get();
         
-         
-
+        
         return view('admin.exemplares.index', compact('exemplares'));
     
     }          
@@ -107,4 +106,22 @@ class ExemplarController extends Controller
     
     }          
 
+
+    public function pesquisaPorTitulo($livro){
+
+        $exemplares = Exemplar::all()->where('livro_id', $livro)
+        ->where('user_id','<>',Auth::user()->id)
+        ->where('disponibilizar_exemplar','LIKE','sim');
+
+
+       if($exemplares =='[]'){
+            flash('Não existe trocador para este livro ainda!')->error();   
+            return view('admin.exemplares.pesquisaPorTitulo', compact('exemplares'));
+        }
+        
+        else{
+            return view('admin.exemplares.pesquisaPorTitulo', compact('exemplares'));
+
+        }
+    }
 }

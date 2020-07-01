@@ -27,10 +27,23 @@
 
             <div class="col-4">
 
-                <img src="{{asset('/images/'. $exemplar->fotos()->first()->foto)}}"  alt="exemplar" style="width:260px; height:390px;" ><br>
+
+
+            @if($exemplar->fotos()->count() == '')
+                <img src="{{asset('/images/livro.jpg')}}" class="card-img-top" alt="livro" >
+            @else 
+              @if($exemplar->fotos()->count())
+              <img src="{{asset('/images/'. $exemplar->fotos()->first()->foto)}}"  alt="exemplar" style="width:260px; height:390px;" ><br>
+             @endif
+            @endif
+      
+        
+
+                
                 <br>
                 
-                <input type="submit" class="btn btn-lg btn-primary" value="Solicitar Troca" style="width:260px;">           
+                <input type="submit" class="btn btn-lg btn-primary" value="Solicitar Troca" style="width:160px">           
+                <a href="{{route('single.livros')}}" class="btn btn-lg btn-danger" style="width:100px">Voltar</a>
             </div>
 
             <div class="row col-8">

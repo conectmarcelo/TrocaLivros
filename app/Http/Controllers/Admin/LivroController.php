@@ -7,6 +7,7 @@ use App\Livro;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LivroRequest;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -31,12 +32,20 @@ class LivroController extends Controller
         
         $livroData = $request->all();
 
+
+        $regras = ['cd_isbn_livro' => 'required|unique:livros'];
+                
+        $message = ['unique' => 'Já exite cadastro'];
+
+
+        $request->validate($regras,$message);
+
         $livro = new Livro();
 
         $livro -> create($livroData);
 
-        flash('Livro criado com sucesso')->success();
-        return redirect()->route('livro.index');
+        flash('Livro cadastrado com sucesso!')->success();
+        return redirect()->route('livro.new');
 
     }
 

@@ -2,11 +2,21 @@
 @section('content')
 
 <div class="container">
-    <h1>Inserção de Livros</h1>
+    <h1>Cadastro de Livros</h1>
     
     <form action="{{route('livro.store')}}" method="post">
     {{csrf_field()}}
-    
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }} para este ISBN, verifique e faça uma nova pesquisa.</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
         <div class="row">
 
             <div class="form-group col ">
@@ -18,6 +28,8 @@
                 <label for="cd_isbn_livro">Isbn</label>
                 <input type="text" class="form-control" id="cd_isbn_livro" name="cd_isbn_livro">
             </div>
+            
+            
             
             <div class="form-group col">
                 <label for="aa_ano_livro">Ano</label>
@@ -70,6 +82,7 @@
             
             
         <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a href="{{route('pesquisar.livro')}}" class="btn btn-danger">Voltar</a>
     </form>
             
     

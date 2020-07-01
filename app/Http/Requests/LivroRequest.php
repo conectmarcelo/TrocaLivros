@@ -13,7 +13,7 @@ class LivroRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,12 +23,16 @@ class LivroRequest extends FormRequest
      */
     public function rules()
     {
+        
+
         return [
             
-            'cd_isbn_livro' => 'required', 'bigInteger', 'cd_isbn_livro', 'unique:livros'
+            'cd_isbn_livro' => ['required', 'cd_isbn_livro', 'unique:livros'],
             
             
         ];
+
+
     }
 
     public function messages(){
@@ -36,4 +40,6 @@ class LivroRequest extends FormRequest
             
             'unique' => 'Este ":attribute" não se encontra disponivel no momento!'
         ];
+    }
+
 }

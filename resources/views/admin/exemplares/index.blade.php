@@ -34,7 +34,9 @@
             @endif
             
             <div class="card-body">
-                <h4 class="card-title">{{$e->livro->nm_titulo_livro}}</h4>
+                
+                <p class="card-title"><b>{{$e->livro->nm_titulo_livro}}</b></p>
+                
                 <p class="card-text">Autor: {{$e->livro->nm_autor_livro}}</p>
                 <p>Categoria: {{$e->livro->ds_categoria_livro}}</p>
                 <p>Condição: {{$e->estado_exemplar}}</p>

@@ -34,8 +34,8 @@
                     </table>
 
                     
-                  <a href="" class="btn btn-sm btn-outline-success" >Aceitar</a>
-                  <a href="" class="btn btn-sm btn-outline-danger" >Recusar</a> 
+                  
+                  <a href="{{route('troca.recusar', ['trocaId'=> $t->id ])}}" class="btn btn-sm btn-outline-danger" >Recusar</a> 
                     
                  
                 </div>

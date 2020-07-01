@@ -62,7 +62,16 @@
                                         {{ __('Esqueceu sua senha?') }}
                                     </a>
                                 @endif
+                                
+                                <p></p>
                             </div>
+                            <p></p>
+                                <div class="col-md-8 offset-md-4">
+                                    <button class="btn btn-primary" >
+                                        <a class="btn btn-link" style='color:white; text-decoration:none; font-size:20px; 'href="{{ route('login.facebook') }}">LOGAR COM FACEBOOK</a>
+                                </button>
+                                </div>
+                                <P></P>
                         </div>
                     </form>
                 </div>

@@ -47,7 +47,8 @@
             <div class="card-body">
                 <h5 class="card-title">{{$e->livro->nm_titulo_livro}}</h5>
                 <p class="card-text">{{$e->livro->nm_autor_livro}}</p>
-                <p class="card-text">{{$e->user->name}}</p>
+                <p class="card-text">Trocador: {{$e->user->name}}</p>
+                <p class="card-text">Cidade: {{$e->user->ds_cidade}}/{{$e->user->ds_uf}}</p>
                 <a href="{{route('exemplar.resumo',['exemplar' => $e->id])}}" class="btn btn-primary" >Quero este livro!</a>
             </div>
         </div>
@@ -55,7 +56,8 @@
     </div>
     <p></p>
     <div class="d-flex justify-content-center">
-    {{$exemplares->links()}}
-  </div>
+        {{$exemplares->links()}}
+      </div>
+    
 </div>
 @endsection

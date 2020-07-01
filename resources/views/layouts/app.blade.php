@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light bg-info shadow-sm">
             <div class="container ">
-                <a class="navbar-brand" href="http://127.0.0.1:8000/">
+                <a class="navbar-brand" href="{{route('single.livros')}}">
                     <img src="{{asset('/logotipo/logotipo.png')}}" alt="logo" width=90 height=60>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -37,7 +37,7 @@
                     <div class="col-8 " >
                         <form class="form-inline my-6 my-lg-0" method="get" action="/pesquisar"style="margin: auto;">
                         {{csrf_field()}}
-                            <input size="50" class="form-control mr-sm-2" type="text" placeholder="Pesquisa por livro, autor..." aria-label="Search" name="text" id="text">
+                            <input size="50" class="form-control mr-sm-2" type="text" placeholder="Título, Autor ou ISBN" aria-label="Search" name="text" id="text">
                             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
                         </form>
                     </div>
@@ -81,7 +81,8 @@
                                         <li><a class="nav-link" href="{{route('user.edit.perfil')}}">Perfil</a></li>
                                         <li><a class="nav-link" href="{{route('exemplar.index')}}">Meus Livros</a></li>
                                         <li><a class="nav-link" href="{{route('troca.index')}}">Minhas Trocas</a></li>
-                                        <li><a class="nav-link" href="{{route('troca.notificacao')}}">Notificações</a></li>
+                                        <li><a class="nav-link" href="{{route('troca.solicitacao')}}">Solicitações Enviadas</a></li>
+                                        <li><a class="nav-link" href="{{route('troca.notificacao')}}">Solicitações Recebidas</a></li>
                                         <li><a class="nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
@@ -94,7 +95,8 @@
                                         <li><a class="nav-link" href="{{route('user.edit.perfil')}}">Perfil</a></li>
                                         <li><a class="nav-link" href="{{route('exemplar.index')}}">Meus Livros</a></li>
                                         <li><a class="nav-link" href="{{route('troca.index')}}">Minhas Trocas</a></li>
-                                        <li><a class="nav-link" href="{{route('troca.notificacao')}}">Notificações</a></li>
+                                        <li><a class="nav-link" href="{{route('troca.solicitacao')}}">Solicitações Enviadas</a></li>
+                                        <li><a class="nav-link" href="{{route('troca.notificacao')}}">Solicitações Recebidas</a></li>
                                         <li><a class="nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
@@ -115,7 +117,7 @@
         <ul class="nav justify-content-center">
 
             <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/">Home</a>
+                <a class="nav-link" href="{{route('single.livros')}}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="">Como funciona</a>
@@ -186,7 +188,7 @@
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="http://127.0.0.1:8000/" >Home</a>
+                        <a href="{{route('single.livros')}}" >Home</a>
                     </li>
                     
                     <li>
