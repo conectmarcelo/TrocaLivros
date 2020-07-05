@@ -61,6 +61,7 @@
 
                                     @if(Auth::user()->ds_foto == '')
 
+                                    
                                     <img src="{{asset('/images/perfil.jpg')}}" alt="foto" style=" with:40px; height:40px; border-radius:50%;">
 
                                     @else
@@ -126,7 +127,7 @@
                 <a class="nav-link" href="">Quem Somos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contato" >Contato</a>
+                <a class="nav-link" href="/livros/public/contato" >Contato</a>
             </li>
                                         
         </ul>

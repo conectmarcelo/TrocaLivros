@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card" style="padding:0px;">
-                <div class="card-header" style="background-color:#6cb2eb; margin:0px 0px 10px 0px;">{{ __('Cadatro') }}</div>
+                <div class="card-header" style="background-color:#6cb2eb; margin:0px 0px 10px 0px;"><h3>{{ __('Cadastro') }}</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

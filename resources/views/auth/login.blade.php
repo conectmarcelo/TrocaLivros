@@ -1,11 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
+
+<style>
+
+
+
+.fb {
+  background-color: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background-color: #55ACEE;
+  color: white;
+}
+
+.google {
+  background-color: #dd4b39;
+  color: white;
+}
+
+</style>
+
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card" style="padding:0px;">
-                <div class="card-header" style="background-color:#6cb2eb; margin:0px 0px 10px 0px;">{{ __('Login') }}</div>
+                <div class="card-header" style="background-color:#6cb2eb; margin:0px 0px 10px 0px;"><h3>{{ __('Login') }}</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -63,16 +87,36 @@
                                     </a>
                                 @endif
                                 
-                                <p></p>
+                         
+                        <p></p>
+                        <div class="form-group row">
+                            <div class="col-md-9">
+                                <a href="{{ route('login.facebook') }}" class="fb btn btn-block">
+                                    <i class="fa fa-facebook fa-fw"></i> Login com Facebook
+                                </a>
                             </div>
-                            <p></p>
-                                <div class="col-md-8 offset-md-4">
-                                    <button class="btn btn-primary" >
-                                        <a class="btn btn-link" style='color:white; text-decoration:none; font-size:20px; 'href="{{ route('login.facebook') }}">LOGAR COM FACEBOOK</a>
-                                </button>
-                                </div>
-                                <P></P>
+                        </div> 
+                        <div class="form-group row">
+                            <div class="col-md-9">
+                                <a href="#" class="twitter btn btn-block">
+                                    <i class="fa fa-twitter fa-fw"></i> Login com Twitter
+                                </a>
+                            </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-md-9">
+                                <a href="#" class="google btn btn-block"><i class="fa fa-google fa-fw">
+                                    </i> Login com Google+
+                                </a>
+                            </div>
+                        </div>
+                      
+
+      
+                        </div>
+                        </div>
+
+
                     </form>
                 </div>
             </div>

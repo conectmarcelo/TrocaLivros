@@ -64,7 +64,7 @@ class SocialiteController extends Controller
         $user->name = $userSocial->name;
         $user->email = $userSocial->email;
         $user->password = Hash::make($userSocial->id);
-        $user->ds_foto = $userSocial->avatar;
+        
         $user->save();
 
         Auth::login($user);
