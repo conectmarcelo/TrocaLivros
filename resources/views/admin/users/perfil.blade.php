@@ -10,9 +10,16 @@
     
     <form action="{{route('user.update.perfil', ['user' => $u->id])}}" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
+    <div class="row col-12">
+    <div class="col-4">
+    <h1>Perfil</h1><br>
+    </div>
+     
+    </div>
+    
     
         <div class="row col-12">
-
+        
             <div class="col-4">
                 <img src="{{asset('/images/'. $u->ds_foto)}}" alt="foto" style=" with:200px; height:200px;">
             
@@ -99,12 +106,7 @@
                             <option value="BA">BA</option>
                         </select>
                     </div>
-
-
-                    
-            
-            
-       
+  
                 </div>
 
 

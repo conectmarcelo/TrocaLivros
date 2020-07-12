@@ -38,10 +38,12 @@ class SinglePageController extends Controller
 
         $text = $request->text;
 
-        $livros = Livro::where('nm_titulo_livro', 'LIKE', "%{$text}%")->
-                        orWhere('cd_isbn_livro', 'LIKE', "%{$text}%")->
-                        orWhere('nm_autor_livro', 'LIKE', "%{$text}%")->
-                        join('livros_fotos', 'livros.id', 'livros_fotos.livro_id')->get();
+        
+
+        $livros = Livro::where('nm_titulo_livro', 'LIKE', "%{$text}%")
+                    ->orWhere('cd_isbn_livro', 'LIKE', "%{$text}%")
+                    ->orWhere('nm_autor_livro', 'LIKE', "%{$text}%")
+                    ->get();
 
         if($livros =='[]'){
 
@@ -62,20 +64,64 @@ class SinglePageController extends Controller
     public function livros()
     {
         
-       $livros = DB::SELECT("select  * from livros inner join livros_fotos on livros.id = livros_fotos.livro_id
-       where livros.id in (select livro_id from exemplares where disponibilizar_exemplar like 'sim') ");
-        
+       $livros = DB::SELECT('select * from livros 
+       where livros.id in (select livro_id from exemplares where disponibilizar_exemplar like "sim") ');
        
-        
-        
-        
-        
-        return view('admin.livros.home', compact('livros'));
+
+       return view('admin.livros.home', compact('livros'));
 
     }
     
-    
+   
 
+    public function pesquisarSideBar(Request $request)
+    {
+        $filtro = $request->all();
+        
+        if($filtro == []){
+        
+            flash('Selecone o Filtro')->error();
+            return redirect()->route('single.livros');
+        }
+        else{
+            $livros = DB::table('livros')
+                ->join('exemplares', 'livros.id', '=', 'exemplares.livro_id')
+                ->join('users', 'users.id', '=', 'exemplares.user_id')
+                ->join('exemplares_fotos','exemplares.id','=','exemplares_fotos.id')
+                ->select(
+                    'livros.id',
+                    'livros.nm_titulo_livro',
+                    'livros.nm_autor_livro',
+                    'livros.nm_editora_livro',
+                    'livros.ds_categoria_livro',
+                    'exemplares_fotos.foto',
+                    'exemplares.estado_exemplar',
+                    'exemplares.user_id',
+                    'exemplares.disponibilizar_exemplar',
+                    'users.ds_cidade',
+                    'users.ds_uf',
+                    'users.name'
+                    
+                )
+                ->where('user_id','<>',Auth::user()->id)
+                ->where('disponibilizar_exemplar','=','sim');
 
+            if(isset($request['ds_categoria_livro'])){
+                $livros = $livros->WhereIn('ds_categoria_livro', $request['ds_categoria_livro']);
+            }
+
+            if(isset($request['estado_exemplar'])){
+                $livros = $livros->whereIn('estado_exemplar', $request['estado_exemplar']);
+            }
+
+            if(isset($request['ds_cidade'])){
+                $livros = $livros->whereIn('ds_cidade', $request['ds_cidade']);
+            }
+
+            $exemplares = $livros->get(); 
+            //return $exemplares;
+             return view('admin.exemplares.home', compact('exemplares'));
+        }
+    }
 }
 

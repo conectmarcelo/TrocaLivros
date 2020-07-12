@@ -4,16 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livro;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 //Route::get('/', function () {
 //    $livros = Livro::all();
@@ -31,6 +22,7 @@ Route::get('/contato', function () {
 Route::get('/', 'SinglePageController@livros')->name('single.livros');
 Route::get('livros', 'SinglePageController@livros')->name('single.livros');
 Route::get('pesquisar', 'SinglePageController@pesquisar')->name('single.pesquisar');
+Route::get('/pesquisarSideBar', 'SinglePageController@pesquisarSideBar')->name('pesquisarSideBar.livro');
 
 
 
@@ -74,7 +66,7 @@ Route::group(['middleware'=>['auth']], function(){
             Route::get('/exemplares/{exemplar}', 'ExemplarFotoController@index')->name('exemplar.foto');
             Route::post('/exemplares/{exemplar}', 'ExemplarFotoController@save')->name('exemplar.foto.save');
             Route::get('deleteFoto/{exemplar}/{foto}', 'ExemplarFotoController@delete')->name('exemplar.foto.delete');
-
+            
             Route::get('lista/{livro}', 'ExemplarController@pesquisaPorTitulo')->name('exemplar.pesquisaPorTitulo');
             
         });

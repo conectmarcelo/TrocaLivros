@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Livro;
 
-class HomeController extends Controller;
+class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,6 +25,7 @@ class HomeController extends Controller;
    
     public function index()
     {
+       
         $livros = Livro::all();
         return view('home', compact('livros'));
     }

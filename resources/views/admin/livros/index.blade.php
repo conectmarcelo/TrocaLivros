@@ -38,7 +38,7 @@
           <td>
               <a href="{{route('livro.edit', ['livro'=> $livro->id])}}" class="btn  btn-sm btn-outline-primary">Editar</a>
               <a href="{{route('livro.delete', ['livro'=> $livro->id])}}" class="btn btn-sm btn-outline-danger">Excluir</a>
-              <a href="{{route('livro.foto', ['livro'=> $livro->id])}}" class="btn btn-sm btn-outline-success">Foto</a>
+              
           </td>
 
           

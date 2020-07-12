@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Cadastro de Livros</h1>
     
-    <form action="{{route('livro.store')}}" method="post">
+    <form action="{{route('livro.store')}}" method="post" enctype="multipart/form-data">
     {{csrf_field()}}
 
     @if ($errors->any())
@@ -16,9 +16,16 @@
             </ul>
         </div>
     @endif
+        <br><br>
+        <div >
+            <div class="form-group">
+                <input type="file" name="ds_foto" id="ds_foto" required class="btn btn-primary" ><br><br>
+            </div>
+        </div>
 
         <div class="row">
 
+            
             <div class="form-group col ">
                 <label for="nm_titulo_livro">Titulo</label>
                 <input type="text" class="form-control" id="nm_titulo_livro" name="nm_titulo_livro">
@@ -37,8 +44,6 @@
             </div>
 
             <div class="form-group col">
-             
-        
                 <label for="ds_idioma_livro">Idioma</label>
                 <select class="form-control"  id="ds_idioma_livro" name="ds_idioma_livro">
                     <option></option>
@@ -56,10 +61,30 @@
         </div>
 
         <div class="row">
+            
+            
+
             <div class="form-group col">
-                <label for="ds_categoria_livro">Categoria</label>
-                <input type="text" class="form-control" id="ds_categoria_livro" name="ds_categoria_livro" >
+            <label for="ds_categoria_livro">Categoria</label>
+                <select class="form-control"  id="ds_categoria_livro" name="ds_categoria_livro">
+                    <option></option>
+                    <option value="Acao">Ação</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="AutoAjuda">Auto Ajuda</option>
+                    <option value="Biografia">Biografia</option>
+                    <option value="Design">Design</option>
+                    <option value="Didaticos">Didáticos</option>
+                    <option value="Drama">Drama</option> 
+                    <option value="Ficcao">Ficção</option>
+                    <option value="Quadrinhos">Quadrinhos</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Suspense">Suspense</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Outros">Outros</option>   
+                </select>
+                       
             </div>
+
 
             <div class="form-group col">
                 <label for="nm_autor_livro">Autor</label>
@@ -83,6 +108,7 @@
             
         <button type="submit" class="btn btn-primary">Cadastrar</button>
         <a href="{{route('pesquisar.livro')}}" class="btn btn-danger">Voltar</a>
+        
     </form>
             
     

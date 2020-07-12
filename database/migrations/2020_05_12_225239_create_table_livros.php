@@ -24,6 +24,7 @@ class CreateTableLivros extends Migration
             $table->string('nm_autor_livro');
             $table->string('nm_editora_livro');
             $table->longText('ds_resumo_livro');
+            $table->string('ds_foto')->nullable();
 
 
             $table->timestamps();

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LivroRequest;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class LivroController extends Controller
@@ -32,7 +33,14 @@ class LivroController extends Controller
         
         $livroData = $request->all();
 
+        $foto = $request->file('ds_foto');
 
+        
+        $newName = sha1($foto->getClientOriginalName()) . uniqid() . '.' . $foto->getClientOriginalExtension();
+        $foto->move(public_path('images'), $newName);
+        $livroData['ds_foto'] = $newName; 
+
+        
         $regras = ['cd_isbn_livro' => 'required|unique:livros'];
                 
         $message = ['unique' => 'Já exite cadastro'];
@@ -44,9 +52,10 @@ class LivroController extends Controller
 
         $livro -> create($livroData);
 
-        flash('Livro cadastrado com sucesso!')->success();
-        return redirect()->route('livro.new');
+        flash('Livro cadastrado com sucesso, ')->success();
+        return redirect()->route('pesquisar.livro');
 
+    
     }
 
     public function edit(Livro $livro)
@@ -94,6 +103,7 @@ class LivroController extends Controller
       return view('admin.livros.pesquisa', compact('livros'));
       
     }
+    
     
 
 

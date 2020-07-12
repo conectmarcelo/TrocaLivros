@@ -31,7 +31,8 @@ class Livro extends Model
         'ds_categoria_livro',
         'nm_autor_livro',
         'nm_editora_livro',
-        'ds_resumo_livro'
+        'ds_resumo_livro',
+        'ds_foto'
         
     ];
 

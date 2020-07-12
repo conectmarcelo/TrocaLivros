@@ -35,7 +35,7 @@
                     <!-- Left Side Of Navbar -->
                         
                     <div class="col-8 " >
-                        <form class="form-inline my-6 my-lg-0" method="get" action="/pesquisar"style="margin: auto;">
+                        <form class="form-inline my-6 my-lg-0" method="get" action="{{route('single.pesquisar')}}" style="margin: auto;">
                         {{csrf_field()}}
                             <input size="50" class="form-control mr-sm-2" type="text" placeholder="Título, Autor ou ISBN" aria-label="Search" name="text" id="text">
                             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
