@@ -17,6 +17,14 @@ Route::get('/contato', function () {
     return view('contato');
 });
 
+Route::get('/quemSomos', function () {
+    return view('quemSomos');
+});
+
+Route::get('/comoFunciona', function () {
+    return view('comoFunciona');
+});
+
 
 
 Route::get('/', 'SinglePageController@livros')->name('single.livros');

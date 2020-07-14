@@ -121,10 +121,10 @@
                 <a class="nav-link" href="{{route('single.livros')}}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Como funciona</a>
+                <a class="nav-link" href="/livros/public/comoFunciona">Como funciona</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Quem Somos</a>
+                <a class="nav-link" href="/livros/public/quemSomos">Quem Somos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/livros/public/contato" >Contato</a>
