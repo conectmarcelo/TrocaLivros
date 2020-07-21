@@ -54,8 +54,9 @@ class SocialiteController extends Controller
 
             $users = $findUser;
 
-            return view('home', compact('users'));
+            //return view('home', compact('users'));
 
+            return redirect()->route('single.livros');
         }else{
 
 
@@ -71,7 +72,7 @@ class SocialiteController extends Controller
 
         $users = $user;
 
-        return view('home',compact('users'));
+        return redirect()->route('single.livros');
 
         }
         

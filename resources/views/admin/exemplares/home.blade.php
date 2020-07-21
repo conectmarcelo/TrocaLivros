@@ -186,16 +186,16 @@
             
             <div class="card">
                 
-                @if($e->foto == '')
+                @if($e->ds_foto == '')
                     <img src="{{asset('/images/livro.jpg')}}" class="card-img-top" alt="livro" >
                     @else 
-                    <img src="{{asset('/images/'. $e->foto)}}" class="card-img-top" alt="livro" >
+                    <img src="{{asset('/images/'. $e->ds_foto)}}" class="card-img-top" alt="livro" >
                 @endif
                     <div class="card-body">
-                        <h5 class="card-title">{{$e->nm_titulo_livro}}</h5>
-                        <p class="card-text">{{$e->nm_autor_livro}}</p>
-                        <p class="card-text">Trocador: {{$e->name}}</p>
-                        <p class="card-text">Cidade: {{$e->ds_cidade}} / {{$e->ds_uf}}</p>
+                        <br><h5 class="card-title" style="font-size:11px"><b>{{$e->nm_titulo_livro}}</b></h5>
+                        <p class="card-text" style="font-size:11px">{{$e->nm_autor_livro}}</p>
+                        <p class="card-text"style="font-size:11px">Trocador: {{$e->name}}</p>
+                        <p class="card-text"style="font-size:11px">Cidade: {{$e->ds_cidade}} / {{$e->ds_uf}}</p>
                         <a href="{{route('exemplar.resumo',['exemplar' => $e->id])}}" class="btn btn-primary" >Quero este livro!</a>
                     </div>
             </div>

@@ -23,7 +23,7 @@
 
         @foreach($exemplares as $e)
 
-        <div class="card col-2">
+        <div class="card" style="margin-left:20px;">
             
             @if($e->fotos()->count() == '')
                 <img src="{{asset('/images/livro.jpg')}}" class="card-img-top" alt="livro" >
@@ -35,14 +35,13 @@
             
             <div class="card-body">
                 
-                <p class="card-title"><b>{{$e->livro->nm_titulo_livro}}</b></p>
+                <p class="card-title" style="font-size:11px"><b>{{$e->livro->nm_titulo_livro}}</b></p>
                 
-                <p class="card-text">Autor: {{$e->livro->nm_autor_livro}}</p>
-                <p>Categoria: {{$e->livro->ds_categoria_livro}}</p>
-                <p>Condição: {{$e->estado_exemplar}}</p>
-                <p>Disponínvel Troca: {{$e->disponibilizar_exemplar}}</p>
+                <p class="card-text" style="font-size:11px">Autor: {{$e->livro->nm_autor_livro}}</p>
+                <p style="font-size:11px">Categoria: {{$e->livro->ds_categoria_livro}}</p>
+                <p style="font-size:11px">Condição: {{$e->estado_exemplar}}</p>
+                <p style="font-size:11px">Disponínvel Troca: {{$e->disponibilizar_exemplar}}</p>
                 <a href="{{route('exemplar.edit', ['exemplar'=> $e->id])}}" class="btn  btn-sm btn-outline-primary">Editar</a>
-                <a href="{{route('exemplar.delete', ['exemplar'=> $e->id])}}" class="btn btn-sm btn-outline-danger">Excluir</a>
                 <a href="{{route('exemplar.foto', ['exemplar'=> $e->id])}}" class="btn btn-sm btn-outline-success">Foto</a>  
             </div>
         </div>

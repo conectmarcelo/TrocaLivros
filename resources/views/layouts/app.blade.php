@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                         
-                    <div class="col-8 " >
+                    <div class="col-8 col-sm-8 d-none d-sm-block" >
                         <form class="form-inline my-6 my-lg-0" method="get" action="{{route('single.pesquisar')}}" style="margin: auto;">
                         {{csrf_field()}}
                             <input size="50" class="form-control mr-sm-2" type="text" placeholder="Título, Autor ou ISBN" aria-label="Search" name="text" id="text">
@@ -75,10 +75,11 @@
                           
                                     <ul style="list-style:none; padding:0px;">
                                         
-                                    @if(Auth::user()->email == 'conectmarcelo@hotmail.com')
+                                    @if(Auth::user()->email == 'admin@admin.com')
 
                                         <li><a class="nav-link" href="{{route('livro.index')}}">Livros</a></li>
                                         <li><a class="nav-link" href="{{route('user.index')}}">Usuários</a></li>
+                                        <li><a class="nav-link" href="{{route('chat')}}">Chat</a></li>
                                         <li><a class="nav-link" href="{{route('user.edit.perfil')}}">Perfil</a></li>
                                         <li><a class="nav-link" href="{{route('exemplar.index')}}">Meus Livros</a></li>
                                         <li><a class="nav-link" href="{{route('troca.index')}}">Minhas Trocas</a></li>
@@ -93,6 +94,7 @@
 
 
                                     @else
+                                        <li><a class="nav-link" href="{{route('chat')}}">Chat</a></li>
                                         <li><a class="nav-link" href="{{route('user.edit.perfil')}}">Perfil</a></li>
                                         <li><a class="nav-link" href="{{route('exemplar.index')}}">Meus Livros</a></li>
                                         <li><a class="nav-link" href="{{route('troca.index')}}">Minhas Trocas</a></li>
@@ -225,11 +227,7 @@
                     <li>
                     <a href=""><i class="fa fa-facebook"> </i> livroexchange</a>
                     </li>
-
-                   
-                    
-      
-        </div>
+            </div>
     </div>
 </footer>
 

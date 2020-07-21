@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container">
-<h1>Livros</h1><br>
 
     @guest
 
@@ -15,9 +14,7 @@
                 <div class="carousel-item">
                     <img class="d-block col-12" src="{{asset('/carousel/2.jpeg')}}" alt="Second slide" >
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block col-12" src="{{asset('/carousel/carrosel.jpg')}}" alt="Third slide">
-                </div>
+                
             </div>
         </div>
         <br>
@@ -46,7 +43,7 @@
         });
     </script>
 
-
+    
     <nav>
     
         <button type="button" id="sidebarCollapse" class="navbar-btn">
@@ -194,11 +191,10 @@
                     <img src="{{asset('/images/'. $livro->ds_foto)}}" class="card-img-top" alt="livro" >
                 @endif
                     <div class="card-body">
-                        <p class="card-title"><b>{{$livro->id}}</b></p>
-                    
-                        <p class="card-title"><b>{{$livro->nm_titulo_livro}}</b></p>
-                        <p class="card-text">Autor: {{$livro->nm_autor_livro}}</p>
-                        <p class="card-text">Editora: {{$livro->nm_editora_livro}}</p>
+                        <br>
+                        <p class="card-title" style="font-size:11px"><b>{{$livro->nm_titulo_livro}}</b></p>
+                        <p class="card-text" style="font-size:11px">Autor: {{$livro->nm_autor_livro}}</p>
+                        <p class="card-text" style="font-size:11px">Editora: {{$livro->nm_editora_livro}}</p>
                         
                         
                         <a href="{{route('exemplar.pesquisaPorTitulo', ['livro'=> $livro->id])}}" class="btn btn-primary" >Quero este livro!</a>

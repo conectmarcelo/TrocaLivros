@@ -59,7 +59,8 @@
                                 
                     
                     <div class="col-6" style="padding:0px;">
-                        
+                        <p>CodigoExemplar: {{$exemplar->id}}</p>
+                        <p>Titulo: {{$exemplar->livro->nm_titulo_livro}}</p>
                         <p>Trocador: {{$exemplar->user->name}}</p>
                         <p>Cidade: {{$exemplar->user->ds_cidade}} / {{$exemplar->user->ds_uf}}</p>
                         <p>Condição: {{$exemplar->estado_exemplar}}</p>
@@ -68,9 +69,11 @@
                 
                     <div class="col-6">
                         
+                        <p>Categoria: {{$exemplar->livro->ds_categoria_livro}}</p>
                         <p>Ano: {{$exemplar->livro->aa_ano_livro}}</p>
                         <p>Editora: {{$exemplar->livro->nm_editora_livro}}</p>
                         <p>ISBN: {{$exemplar->livro->cd_isbn_livro}}</p>
+                        
 
                     </div>
 

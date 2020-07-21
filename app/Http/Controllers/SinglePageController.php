@@ -84,27 +84,28 @@ class SinglePageController extends Controller
             return redirect()->route('single.livros');
         }
         else{
-            $livros = DB::table('livros')
-                ->join('exemplares', 'livros.id', '=', 'exemplares.livro_id')
+            $livros = DB::table('exemplares')
+                ->join('livros', 'livros.id', '=', 'exemplares.livro_id')
                 ->join('users', 'users.id', '=', 'exemplares.user_id')
-                ->join('exemplares_fotos','exemplares.id','=','exemplares_fotos.id')
                 ->select(
-                    'livros.id',
+                    'exemplares.id',
+                    'exemplares.estado_exemplar',
+                    'exemplares.disponibilizar_exemplar',
+                    
                     'livros.nm_titulo_livro',
                     'livros.nm_autor_livro',
                     'livros.nm_editora_livro',
                     'livros.ds_categoria_livro',
-                    'exemplares_fotos.foto',
-                    'exemplares.estado_exemplar',
-                    'exemplares.user_id',
-                    'exemplares.disponibilizar_exemplar',
+                    'livros.ds_foto',
                     'users.ds_cidade',
                     'users.ds_uf',
                     'users.name'
                     
                 )
+                
                 ->where('user_id','<>',Auth::user()->id)
-                ->where('disponibilizar_exemplar','=','sim');
+                ->where('disponibilizar_exemplar','=','sim')
+                ->where('exemplares.deleted_at', null);
 
             if(isset($request['ds_categoria_livro'])){
                 $livros = $livros->WhereIn('ds_categoria_livro', $request['ds_categoria_livro']);

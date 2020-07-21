@@ -111,6 +111,11 @@ Route::group(['middleware'=>['auth']], function(){
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/chat', 'ChatController@index')->name('chat');
+Route::get('/message/{id}', 'ChatController@getMessage')->name('message');
+Route::post('message', 'ChatController@sendMessage');
+
+
 });
 
 Auth::routes();

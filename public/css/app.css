@@ -4995,7 +4995,7 @@ input[type=button].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 1rem;
-  padding: 15px;
+  padding: 12px;
 }
 
 .card > hr {
